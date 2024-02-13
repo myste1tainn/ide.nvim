@@ -1,8 +1,8 @@
+require("ide.flutter.tasks.devices-manager")
 local M = {}
 
 function M.setup()
-    require('uide.flutter.tasks.devices-manager').setup()
+  DeviceManager.setup()
 end
-
 
 return M

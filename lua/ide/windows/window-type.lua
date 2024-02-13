@@ -1,5 +1,5 @@
-require('uide.windows.window-type-enum')
-require('ui')
+require('ide.windows.window-type-enum')
+require('uinvim')
 
 WindowType = {}
 

@@ -1,27 +1,29 @@
-local dump = require('utils').dump
+require("ide.utils")
 Class = {}
 
 -- look up for `k' in list of tables `plist'
 function Class.search(k, plist)
-  for i = 1, table.getn(plist) do
+  for i = 1, #plist do
     local v = plist[i][k] -- try `i'-th superclass
-    if v then return v end
+    if v then
+      return v
+    end
   end
 end
 
 function Class.create(...)
   local c = {} -- new class
 
-  print('#############', dump(arg))
+  print("#############", Dump(arg))
 
   -- class will search for each method in the list of its
   -- parents (`arg' is the list of parents)
   setmetatable(c, {
     __index = function(t, k)
       local v = Class.search(k, arg)
-      t[k] = v   -- save for next access
+      t[k] = v -- save for next access
       return v
-    end
+    end,
   })
 
   -- prepare `c' to be the metatable of its instances
